@@ -1,12 +1,12 @@
-# API Secure Code Review cheat sheet. 
-## Focused on microservice architecture with no user or browser interaction.
+#  API Secure Code Review cheat sheet. 
+##  Focused on microservice architecture with no user or browser interaction.
 
 The category list is based on OWASP API Security Project.
 
-### API1:2019 Broken Object Level Authorization
+##  API1:2019 Broken Object Level Authorization
 N/A in most of the cases of internal APIs that provide raw data.
 
-## API2:2019 Broken User Authentication
+##  API2:2019 Broken User Authentication
 N/A in most cases due to lack of user-API interaction and different roles to access resources 
 
 ## API3:2019 Excessive Data Exposure
