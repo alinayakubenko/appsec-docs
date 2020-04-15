@@ -42,3 +42,79 @@ All endpoints information should be documented and up to date. The proper invent
 ## API10:2019 Insufficient Logging & Monitoring
 Business logic events should be logged properly without exposing sensitive information but sufficient for possible future investigations.
 On a higher level, all activities should be monitored in order to notice suspicious activities as soon as possible.
+
+## Some vulnerabiliities to look for and prevent in the code
+
+### Insufficient HTTP Headers vulnerability
+
+Possible issues: 
+Cross-site scripting
+Clickjacking
+Insecure communication
+
+* Ensure all necessary security headers are set and correctly configured.
+* Always use the most secure implementation of newly added headers.
+
+Examples:
+
+Enable an browser XSS filter.
+X-XSS-Protection 1; mode=block
+
+Prevent browser from MIME sniffing a response to another content type.
+X-Content-Type-Options: nosniff
+
+Use Content-Security-Policy to prevent different kinds of attack, including XSS
+
+X-Permitted-Cross-Domain-Policies  none 
+to restrict access to data Adobe Flash Player. 
+
+Content-Type: text/html; charset=utf-8
+to restrict the data format while interacting with the resource.
+
+X-Frame-Options: SAMEORIGING
+to prevent loading of the resource in an iframe outside of their domain
+
+Set Server headers to a custom value or as generic as possible.
+
+Remove all X-Powered-By headers.
+
+
+### Insufficient Data escaping
+
+* Perform Encoding and escaping on all data coming from external sources.
+* Determine what kind of interpreter will make use of the data, and what characters should be escaped or/and encoded. Use standard framework libraries.
+* Never trust the input.
+* Apply application-wide encoding on all external data.
+* Make sure to consider threats to both input and output.
+
+### Code injection
+
+* Never trust the input. Can't stress this enough.
+* Use parametrised queries. Avoid string concatenation.
+* If applies, filter and sanitise all input using filtering, encoding, and whitelist validation. 
+* Don't let methods use user input directly
+
+
+### NoSQL injection
+
+* Input should be validated before being used to query the database. 
+* Use a database ORM instead of raw queries.
+* Convert input to the correct types during validation.
+* Use explicit comparison operators in query expressions instead of implicit equality matching. 
+
+### SQL injection
+
+* Use framework to construct secure database queries.
+* Whitelist validation of input data. 
+
+### Insecure Deserialization 
+
+* Sanitise the data of serialized object as untrusted input through filtering or validation.
+* To prevent tampering implement integrity checks such as digital signature  on any serialized object.
+* Run code that deserializes  in environment with the low privilege.
+
+### Server-Side Request forgery
+
+* Restrict requests made by the server to whitelisted location when possible.
+* Display generic errors.
+
