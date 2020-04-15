@@ -1,5 +1,5 @@
 
-# Cheat Sheet on secure code in REST API
+# Cheat Sheet on secure code review in REST API
 
 1. Cover/mask the sensitive data, like account number, ssn, etc. Looking at the value it shouldn't be possible to understand what kind of data this is.
 2. the encryption is used and endpoints are running over HTTPS. The server is only has TLSv1.2. Verify that backend TLS connection failures are logged.
