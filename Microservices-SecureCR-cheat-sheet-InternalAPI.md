@@ -43,7 +43,7 @@ All endpoints information should be documented and up to date. The proper invent
 Business logic events should be logged properly without exposing sensitive information but sufficient for possible future investigations.
 On a higher level, all activities should be monitored in order to notice suspicious activities as soon as possible.
 
-## Some vulnerabiliities to look for and prevent in the code
+## Some vulnerabilities to look for and prevent in the code
 
 ### Insufficient HTTP Headers vulnerability
 
